@@ -5,33 +5,23 @@ int main()
 {
     int t;
     cin >> t;
+
     while (t--)
     {
         int n;
         cin >> n;
         int arr[n];
-        cin >> arr[0];
-        int ans = 0;
-        for (int i = 1; i < n; i++)
-        {
+        for (int i = 0; i < n; i++)
             cin >> arr[i];
-            if (arr[i] < arr[i - 1])
-                ans = 1;
-        }
-        if (ans)
-        {
-            cout << 0 << endl;
-            continue;
-        }
-        int min = INT32_MAX;
-        for (int i = 1; i < n; i++)
-        {
-            int newMin = ((arr[i] - arr[i - 1]) / 2) + 1;
-            if (newMin < min)
-                min = newMin;
-        }
-        cout << min << endl;
-    }
+        int odd = 0;
+        for (int i = 0; i < n; i++)
+            if (arr[i] % 2 != 0)
+                odd++;
 
+        if (odd % 2 == 0)
+            cout << "YES" << endl;
+        else
+            cout << "NO" << endl;
+    }
     return 0;
 }
