@@ -10,7 +10,7 @@ int main()
         int n, a, b;
         cin >> n >> a >> b;
 
-        if (a + b + 2 <= n || n == 1)
+        if (a + b + 2 <= n || (a == n && b == n))
             cout << "YES" << endl;
         else
             cout << "NO" << endl;
