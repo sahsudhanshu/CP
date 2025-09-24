@@ -4,17 +4,17 @@ using namespace std;
 
 int main()
 {
-    int t;
+    ll t;
     cin >> t;
     while (t--)
     {
-        int n;
+        ll n;
         cin >> n;
-        vector<int> v(n);
-        for (int i = 0; i < n; i++)
+        vector<ll> v(n);
+        for (ll i = 0; i < n; i++)
             cin >> v[i];
-        int start = 0;
-        for (int i = 0; i < n; i++)
+        int start = -1;
+        for (ll i = 0; i < n; i++)
         {
             if (v[i] != 0)
             {
@@ -22,8 +22,8 @@ int main()
                 break;
             }
         }
-        int end = 0;
-        for (int i = n - 1; i >= 0; i--)
+        ll end = -1;
+        for (ll i = n - 1; i >= 0; i--)
         {
             if (v[i] != 0)
             {
@@ -31,20 +31,26 @@ int main()
                 break;
             }
         }
-        if (start == end && v[start] == 0)
+        if (start == -1 && end == -1)
         {
             cout << 0 << endl;
             continue;
         }
-        int count = 0;
-        for (int i = start; i <= end; i++)
+        bool zero = false;
+
+        for (ll i = start; i <= end; i++)
         {
-            if (v[i] == 0 && v[i - 1] != 0)
-                count++;
-            if (v[i] != 0 && i == end)
-                count++;
+            if (v[i] == 0)
+            {
+                zero = true;
+            }
         }
-        cout << count << endl;
+        if (zero)
+        {
+            cout << 2 << endl;
+        }
+        else
+            cout << 1 << endl;
     }
 
     return 0;
